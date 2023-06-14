@@ -12,7 +12,7 @@ export function useMainnetEnsName(address: string | undefined) {
     address: isLoading || isError || !universalResolver || universalResolver === '0x0000000000000000000000000000000000000000' ? undefined : address,
     chainId,
     enabled,
-    universalResolver
+    universalResolverAddress: universalResolver,
   });
 
   const { data: ensNameMainnet } = useEnsName({
