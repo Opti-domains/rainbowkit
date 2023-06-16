@@ -6,10 +6,20 @@ export function useMainnetEnsName(address: string | undefined) {
   const { chain } = useNetwork();
   const { chainId: mainnetChainId, enabled } = useMainnet();
 
-  const { data: universalResolver, isLoading, isError } = useUniversalEnsReverseResolver({ address, chainId: chain.id })
-  
+  const {
+    data: universalResolver,
+    isError,
+    isLoading,
+  } = useUniversalEnsReverseResolver({ address, chainId: chain.id });
+
   const { data: ensName } = useEnsName({
-    address: isLoading || isError || !universalResolver || universalResolver === '0x0000000000000000000000000000000000000000' ? undefined : address,
+    address:
+      isLoading ||
+      isError ||
+      !universalResolver ||
+      universalResolver === '0x0000000000000000000000000000000000000000'
+        ? undefined
+        : address,
     chainId: chain.id,
     enabled,
     universalResolverAddress: universalResolver,
@@ -22,6 +32,11 @@ export function useMainnetEnsName(address: string | undefined) {
   });
 
   if (isLoading) return undefined;
-  if (isError || !universalResolver || universalResolver === '0x0000000000000000000000000000000000000000') return ensNameMainnet;
+  if (
+    isError ||
+    !universalResolver ||
+    universalResolver === '0x0000000000000000000000000000000000000000'
+  )
+    return ensNameMainnet;
   return ensName;
 }
