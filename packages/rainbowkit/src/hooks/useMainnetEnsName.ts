@@ -1,16 +1,16 @@
 import { useEnsName, useNetwork } from 'wagmi';
 import { useMainnet } from './useMainnet';
-import { useUniversalReverseResolver } from './useUniversalEnsRegistry.ts';
+import { useUniversalEnsReverseResolver } from './useUniversalEnsRegistry';
 
 export function useMainnetEnsName(address: string | undefined) {
-  const { chainId } = useNetwork();
+  const { chain } = useNetwork();
   const { chainId: mainnetChainId, enabled } = useMainnet();
 
-  const { data: universalResolver, isLoading, isError } = useUniversalReverseResolver({ address, chainId })
+  const { data: universalResolver, isLoading, isError } = useUniversalEnsReverseResolver({ address, chainId: chain.id })
   
   const { data: ensName } = useEnsName({
     address: isLoading || isError || !universalResolver || universalResolver === '0x0000000000000000000000000000000000000000' ? undefined : address,
-    chainId,
+    chainId: chain.id,
     enabled,
     universalResolverAddress: universalResolver,
   });
@@ -22,6 +22,6 @@ export function useMainnetEnsName(address: string | undefined) {
   });
 
   if (isLoading) return undefined;
-  if (isError) return ensNameMainnet;
+  if (isError || !universalResolver || universalResolver === '0x0000000000000000000000000000000000000000') return ensNameMainnet;
   return ensName;
 }
