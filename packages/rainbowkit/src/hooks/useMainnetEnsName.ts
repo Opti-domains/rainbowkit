@@ -21,7 +21,6 @@ export function useMainnetEnsName(address: string | undefined) {
         ? undefined
         : address,
     chainId: chain.id,
-    enabled,
     universalResolverAddress: universalResolver,
   });
 

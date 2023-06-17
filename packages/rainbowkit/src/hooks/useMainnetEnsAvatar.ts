@@ -18,7 +18,6 @@ export function useMainnetEnsAvatar(name: string | null | undefined) {
 
   const { data: ensAvatar } = useEnsAvatar({
     chainId: chain.id,
-    enabled,
     name:
       isLoading ||
       isError ||
