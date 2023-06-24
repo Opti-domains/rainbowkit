@@ -1,3 +1,4 @@
+import packet from 'dns-packet';
 import { useContractRead } from 'wagmi';
 
 // Same address across chains
@@ -114,7 +115,7 @@ export function useUniversalEnsRegistryResolver({
   >({
     abi: ABI,
     address: name && chainId ? UNIVERSAL_ENS_REGISTRY : undefined,
-    args: [operator, name],
+    args: [operator, '0x' + (packet as any).name.encode(name).toString('hex')],
     chainId,
     functionName: 'getRegistryByName',
   });

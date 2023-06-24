@@ -409,6 +409,9 @@ importers:
       clsx:
         specifier: 1.1.1
         version: 1.1.1
+      dns-packet:
+        specifier: ^5.6.0
+        version: 5.6.0
       qrcode:
         specifier: 1.5.0
         version: 1.5.0
@@ -419,6 +422,9 @@ importers:
         specifier: 2.5.4
         version: 2.5.4(@types/react@18.2.12)(react@18.2.0)
     devDependencies:
+      '@types/dns-packet':
+        specifier: ^5.2.4
+        version: 5.2.4
       '@types/qrcode':
         specifier: ^1.4.2
         version: 1.5.0
@@ -451,7 +457,7 @@ importers:
         version: 0.30.1
       wagmi:
         specifier: npm:@optidomains/wagmi@1.2.0
-        version: /@optidomains/wagmi@1.2.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(viem@0.3.50)
+        version: /@optidomains/wagmi@1.2.0(react@18.2.0)(typescript@5.1.3)(viem@0.3.50)
 
   packages/rainbowkit-siwe-next-auth:
     dependencies:
@@ -4488,7 +4494,7 @@ packages:
       - zod
     dev: true
 
-  /@optidomains/wagmi@1.2.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(viem@0.3.50):
+  /@optidomains/wagmi@1.2.0(react@18.2.0)(typescript@5.1.3)(viem@0.3.50):
     resolution: {integrity: sha512-aLrH12RAtXlNnxbF6GT5I1oshU+RKrBFdY/7F/btZMcFJT7KEPukJnWadM+BbejcI6Rn4NLqKB/0GssMy7vOXg==}
     peerDependencies:
       react: '>=17.0.0'
@@ -4514,7 +4520,6 @@ packages:
       - encoding
       - immer
       - lokijs
-      - react-dom
       - react-native
       - supports-color
       - utf-8-validate
@@ -6095,6 +6100,12 @@ packages:
     dependencies:
       '@types/ms': 0.7.31
 
+  /@types/dns-packet@5.2.4:
+    resolution: {integrity: sha512-OAruArypdNxR/tzbmrtoyEuXeNTLaZCpO19BXaNC10T5ACIbvjmvhmV2RDEy2eLc3w8IjK7SY3cvUCcAW+sfoQ==}
+    dependencies:
+      '@types/node': 18.16.18
+    dev: true
+
   /@types/eslint-scope@3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
@@ -6247,7 +6258,7 @@ packages:
       '@types/http-errors': 2.0.1
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
-      '@types/node': 17.0.45
+      '@types/node': 18.16.18
     dev: false
 
   /@types/long@4.0.2:
