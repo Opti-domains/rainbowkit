@@ -115,7 +115,7 @@ export function useUniversalEnsRegistryResolver({
   >({
     abi: ABI,
     address: name && chainId ? UNIVERSAL_ENS_REGISTRY : undefined,
-    args: [operator, '0x' + (packet as any).name.encode(name).toString('hex')],
+    args: [operator, '0x' + (packet as any).name.encode(name || "").toString('hex')],
     chainId,
     functionName: 'getRegistryByName',
   });
