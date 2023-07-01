@@ -10,14 +10,14 @@ export function useMainnetEnsAvatar(name: string | null | undefined) {
     data: getRegistryByNameResult,
     isError,
     isLoading,
-  } = useUniversalEnsRegistryResolver({ chainId: chain.id, name });
+  } = useUniversalEnsRegistryResolver({ chainId: chain?.id, name });
 
   const universalResolver = getRegistryByNameResult
     ? getRegistryByNameResult[1]
     : undefined;
 
   const { data: ensAvatar } = useEnsAvatar({
-    chainId: chain.id,
+    chainId: chain?.id,
     name:
       isLoading ||
       isError ||

@@ -10,7 +10,7 @@ export function useMainnetEnsName(address: string | undefined) {
     data: universalResolver,
     isError,
     isLoading,
-  } = useUniversalEnsReverseResolver({ address, chainId: chain.id });
+  } = useUniversalEnsReverseResolver({ address, chainId: chain?.id });
 
   const { data: ensName } = useEnsName({
     address:
@@ -20,7 +20,7 @@ export function useMainnetEnsName(address: string | undefined) {
       universalResolver === '0x0000000000000000000000000000000000000000'
         ? undefined
         : address,
-    chainId: chain.id,
+    chainId: chain?.id,
     universalResolverAddress: universalResolver,
   });
 
